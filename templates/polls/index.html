@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie-edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title> P O L L </title>
+</head>
+<body style="background-color: lightgreen;">
+    <header>
+        <img src="polls/phin.png" style="width: 1355px; height: 170px; padding: 8px;">
+    </header>
+    <section>
+        {% block content %}
+        <center><p style="font-size: 45px; font-family: Arial Black"><b> W E L C O M E </b></p></center>
+            {% if latest_question_list %}
+                <ol style="margin-left: 400px; font-size: 25px;">
+                {% for question in latest_question_list %}
+                    <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
+                {% endfor %}
+                </ol>
+            {% else %}
+                <p>No polls are available.</p>
+            {% endif %}
+        {% endblock %}
+    </section>
+</body>
+</html>
